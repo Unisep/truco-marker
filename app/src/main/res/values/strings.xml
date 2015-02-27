@@ -4,5 +4,13 @@
     <string name="app_name">truco-marker</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="label_we">Nós</string>
+    <string name="label_they">Eles</string>
+    <string name="label_we_points">3</string>
+    <string name="label_they_points">3</string>
+    <string name="button_name_plus_one_we">+ 1</string>
+    <string name="label_button_plus_one_they">+ 1</string>
+    <string name="label_button_plus_three_we">+3</string>
+    <string name="label_button_plus_three_they">+3</string>
 
 </resources>

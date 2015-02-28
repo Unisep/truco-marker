@@ -12,5 +12,8 @@
     <string name="label_button_plus_one_they">+ 1</string>
     <string name="label_button_plus_three_we">+3</string>
     <string name="label_button_plus_three_they">+3</string>
+    <string name="back_button">Voltar</string>
+    <string name="botao_sei_la">Sei lá</string>
+    <string name="text_view_custom_layout">Aqui vem as paradas</string>
 
 </resources>

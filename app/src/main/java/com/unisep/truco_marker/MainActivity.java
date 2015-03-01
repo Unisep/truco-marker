@@ -1,15 +1,12 @@
 package com.unisep.truco_marker;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.os.Bundle;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,13 +16,11 @@ public class MainActivity extends Activity {
     private Button addOneButtonToWe;
     private Button addThreeButtonToWe;
     private TextView labelScoreWe;
-    int scoreWe = 0;
 
     // They Objects
     private Button addOneButtonToThey;
     private Button addThreeButtonToThey;
     private TextView labelScoreThey;
-    int scoreThey = 0;
 
     GridView gridWe;
     GridView gridThey;
@@ -43,7 +38,6 @@ public class MainActivity extends Activity {
 
         gridWe = (GridView) findViewById(R.id.grid_view_we);
         gridThey = (GridView) findViewById(R.id.grid_view_they);
-
 
         addOneButtonToWe = (Button) findViewById(R.id.button_plus_one_we);
         addThreeButtonToWe = (Button) findViewById(R.id.button_plus_three_we);
@@ -71,20 +65,34 @@ public class MainActivity extends Activity {
     }
 
     public void addItems(View v) {
-        if(v.equals(addOneButtonToWe))
-            setText(1, listWe);
-        else if(v.equals(addThreeButtonToWe))
-            setText(3, listWe);
-        else if(v.equals(addOneButtonToThey))
-            setText(1, listThey);
-        else
-            setText(3, listThey);
+        int resultado = 0;
+        if (v.equals(addOneButtonToWe)){
+            resultado = setScore(1, listWe);
+            labelScoreWe.setText(String.valueOf(resultado));
+        }else if (v.equals(addThreeButtonToWe)){
+            resultado = setScore(3, listWe);
+            labelScoreWe.setText(String.valueOf(resultado));
+        }else if(v.equals(addOneButtonToThey)) {
+            resultado = setScore(1, listThey);
+            labelScoreThey.setText(String.valueOf(resultado));
+        } else {
+            resultado = setScore(3, listThey);
+            labelScoreThey.setText(String.valueOf(resultado));
+        }
 
         adapterWe.notifyDataSetChanged();
         adapterThey.notifyDataSetChanged();
     }
 
-    private void setText(int quantity, ArrayList<String> list){
-        list.add(String.valueOf(quantity));
+    private int setScore(int quantity, ArrayList<String> list){
+        int last = 0;
+        if (list.size() > 0)
+            last = Integer.parseInt(list.get(list.size() - 1));
+
+        int amount = last + quantity;
+
+        list.add(String.valueOf(amount));
+
+        return amount;
     }
 }

@@ -1,17 +1,17 @@
 package com.unisep.truco_marker;
 
 import android.app.Activity;
-import android.content.Context;
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.printservice.PrintService;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
@@ -19,21 +19,31 @@ public class MainActivity extends Activity {
     private Button addOneButtonToWe;
     private Button addThreeButtonToWe;
     private TextView labelScoreWe;
+    int scoreWe = 0;
 
     // They Objects
     private Button addOneButtonToThey;
     private Button addThreeButtonToThey;
     private TextView labelScoreThey;
+    int scoreThey = 0;
 
-    private LinearLayout linearLayout;
-    private LayoutInflater layoutInflater;
+    GridView gridWe;
+    GridView gridThey;
 
-    private Integer controllerID;
+    ArrayAdapter<String> adapterWe;
+    ArrayAdapter<String> adapterThey;
+
+    ArrayList<String> listWe = new ArrayList<>();
+    ArrayList<String> listThey = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        gridWe = (GridView) findViewById(R.id.grid_view_we);
+        gridThey = (GridView) findViewById(R.id.grid_view_they);
+
 
         addOneButtonToWe = (Button) findViewById(R.id.button_plus_one_we);
         addThreeButtonToWe = (Button) findViewById(R.id.button_plus_three_we);
@@ -43,19 +53,38 @@ public class MainActivity extends Activity {
         addThreeButtonToThey = (Button) findViewById(R.id.button_plus_three_they);
         labelScoreThey = (TextView) findViewById(R.id.label_score_they);
 
-        linearLayout = (LinearLayout) findViewById(R.id.mylayout1);
-        layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        int layout = android.R.layout.simple_list_item_1;
 
-        controllerID = 0;
+        adapterWe = new ArrayAdapter<>(this, layout, listWe);
+        adapterThey = new ArrayAdapter<>(this, layout, listThey);
+
+        gridWe.setAdapter(adapterWe);
+        gridThey.setAdapter(adapterThey);
+
+//        gridWe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+//                Toast.makeText(getApplicationContext(),
+//                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
     }
 
-    public void testView(View view){
-        View customView = layoutInflater.inflate(R.layout.custom_layout, null);
-        TextView tv = (TextView) customView.findViewById(R.id.label_score_item);
+    public void addItems(View v) {
+        if(v.equals(addOneButtonToWe))
+            setText(1, listWe);
+        else if(v.equals(addThreeButtonToWe))
+            setText(3, listWe);
+        else if(v.equals(addOneButtonToThey))
+            setText(1, listThey);
+        else
+            setText(3, listThey);
 
-        tv.setId(controllerID ++);
-        tv.setText("Location:" + 4);
+        adapterWe.notifyDataSetChanged();
+        adapterThey.notifyDataSetChanged();
+    }
 
-        linearLayout.addView(view);
+    private void setText(int quantity, ArrayList<String> list){
+        list.add(String.valueOf(quantity));
     }
 }

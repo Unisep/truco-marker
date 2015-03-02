@@ -12,48 +12,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    // We Objects
-    private Button addOneButtonToWe;
-    private Button addThreeButtonToWe;
-    private TextView labelScoreWe;
-
-    // They Objects
-    private Button addOneButtonToThey;
-    private Button addThreeButtonToThey;
-    private TextView labelScoreThey;
-
-    GridView gridWe;
-    GridView gridThey;
-
-    ArrayAdapter<String> adapterWe;
-    ArrayAdapter<String> adapterThey;
-
-    ArrayList<String> listWe = new ArrayList<>();
-    ArrayList<String> listThey = new ArrayList<>();
+    private Team teamWe;
+    private Team teamThey;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gridWe = (GridView) findViewById(R.id.grid_view_we);
-        gridThey = (GridView) findViewById(R.id.grid_view_they);
-
-        addOneButtonToWe = (Button) findViewById(R.id.button_plus_one_we);
-        addThreeButtonToWe = (Button) findViewById(R.id.button_plus_three_we);
-        labelScoreWe = (TextView) findViewById(R.id.label_score_we);
-
-        addOneButtonToThey = (Button) findViewById(R.id.button_plus_one_they);
-        addThreeButtonToThey = (Button) findViewById(R.id.button_plus_three_they);
-        labelScoreThey = (TextView) findViewById(R.id.label_score_they);
-
-        int layout = android.R.layout.simple_list_item_1;
-
-        adapterWe = new ArrayAdapter<>(this, layout, listWe);
-        adapterThey = new ArrayAdapter<>(this, layout, listThey);
-
-        gridWe.setAdapter(adapterWe);
-        gridThey.setAdapter(adapterThey);
+        prepareTeams();
 
 //        gridWe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -64,24 +31,43 @@ public class MainActivity extends Activity {
 
     }
 
-    public void addItems(View v) {
-        int resultado = 0;
-        if (v.equals(addOneButtonToWe)){
-            resultado = setScore(1, listWe);
-            labelScoreWe.setText(String.valueOf(resultado));
-        }else if (v.equals(addThreeButtonToWe)){
-            resultado = setScore(3, listWe);
-            labelScoreWe.setText(String.valueOf(resultado));
-        }else if(v.equals(addOneButtonToThey)) {
-            resultado = setScore(1, listThey);
-            labelScoreThey.setText(String.valueOf(resultado));
-        } else {
-            resultado = setScore(3, listThey);
-            labelScoreThey.setText(String.valueOf(resultado));
-        }
+    private void prepareTeams() {
+        int layout = android.R.layout.simple_list_item_1;
 
-        adapterWe.notifyDataSetChanged();
-        adapterThey.notifyDataSetChanged();
+        teamWe = new Team("We",
+                findViewById(R.id.button_plus_one_we),
+                findViewById(R.id.label_score_we),
+                findViewById(R.id.button_plus_three_we),
+                findViewById(R.id.grid_view_we),
+                new ArrayAdapter<Movement>(this, layout));
+
+        teamThey = new Team("They",
+                findViewById(R.id.button_plus_one_they),
+                findViewById(R.id.label_score_they),
+                findViewById(R.id.button_plus_three_they),
+                findViewById(R.id.grid_view_they),
+                new ArrayAdapter<String>(this, layout));
+    }
+
+    public void addItems(View v) {
+//        int resultado = 0;
+//        if (v.equals(addOneButtonToWe)){
+//            resultado = setScore(1, listWe);
+//            labelScoreWe.setText(String.valueOf(resultado));
+//        }else if (v.equals(addThreeButtonToWe)){
+//            resultado = setScore(3, listWe);
+//            labelScoreWe.setText(String.valueOf(resultado));
+//        }else if(v.equals(addOneButtonToThey)) {
+//            resultado = setScore(1, listThey);
+//            labelScoreThey.setText(String.valueOf(resultado));
+//        } else {
+//            resultado = setScore(3, listThey);
+//            labelScoreThey.setText(String.valueOf(resultado));
+//        }
+//
+//        adapterWe.notifyDataSetChanged();
+//        adapterThey.notifyDataSetChanged();
+
     }
 
     private int setScore(int quantity, ArrayList<String> list){

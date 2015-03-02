@@ -35,21 +35,25 @@ public class MainActivity extends Activity {
         int layout = android.R.layout.simple_list_item_1;
 
         teamWe = new Team("We",
-                findViewById(R.id.button_plus_one_we),
-                findViewById(R.id.label_score_we),
-                findViewById(R.id.button_plus_three_we),
-                findViewById(R.id.grid_view_we),
-                new ArrayAdapter<Movement>(this, layout));
+                          findViewById(R.id.button_plus_one_we),
+                          findViewById(R.id.label_score_we),
+                          findViewById(R.id.button_plus_three_we),
+                          findViewById(R.id.grid_view_we),
+                          new ArrayAdapter<Movement>(this, layout)
+        );
 
         teamThey = new Team("They",
-                findViewById(R.id.button_plus_one_they),
-                findViewById(R.id.label_score_they),
-                findViewById(R.id.button_plus_three_they),
-                findViewById(R.id.grid_view_they),
-                new ArrayAdapter<String>(this, layout));
+                            findViewById(R.id.button_plus_one_they),
+                            findViewById(R.id.label_score_they),
+                            findViewById(R.id.button_plus_three_they),
+                            findViewById(R.id.grid_view_they),
+                            new ArrayAdapter<Movement>(this, layout)
+        );
     }
 
     public void addItems(View v) {
+        Button u = (Button) v;
+        v.
 //        int resultado = 0;
 //        if (v.equals(addOneButtonToWe)){
 //            resultado = setScore(1, listWe);

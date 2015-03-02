@@ -21,7 +21,7 @@ public class Team {
     private ArrayList<Movement> movements;
 
     public Team(String name, View buttonPlusOne, View buttonPlusThree, View labelScore, View grid,
-                ArrayAdapter<String> adap) {
+                ArrayAdapter<Movement> adapter) {
         this.name = name;
         this.plusOne = (Button) buttonPlusOne;
         this.plusThree = (Button) buttonPlusThree;
@@ -29,10 +29,14 @@ public class Team {
         this.gridMovements = (GridView) grid;
         this.scoreLabel = (TextView) labelScore;
         this.movements = new ArrayList<>();
-        this.adapter = adap;
+        this.adapter = adapter;
 
-        adap.addAll(this.movements);
+        adapter.addAll(this.movements);
         gridMovements.setAdapter(this.adapter);
+    }
+
+    public boolean isTeamObject(Object o){
+        return false;
     }
 
     public String getName() {
@@ -75,19 +79,19 @@ public class Team {
         this.gridMovements = gridMovements;
     }
 
-    public ArrayAdapter<String> getAdapter() {
+    public ArrayAdapter<Movement> getAdapter() {
         return adapter;
     }
 
-    public void setAdapter(ArrayAdapter<String> adapter) {
+    public void setAdapter(ArrayAdapter<Movement> adapter) {
         this.adapter = adapter;
     }
 
-    public ArrayList<String> getMovements() {
+    public ArrayList<Movement> getMovements() {
         return movements;
     }
 
-    public void setMovements(ArrayList<String> movements) {
+    public void setMovements(ArrayList<Movement> movements) {
         this.movements = movements;
     }
 }

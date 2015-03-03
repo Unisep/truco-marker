@@ -1,30 +1,43 @@
 package com.unisep.truco_marker;
 
+import java.util.ArrayList;
+
 /**
  * Created by bruno on 3/1/15.
  */
 public class Movement {
-    private int id;
-    private String quantity;
+    private int quantity;
+    private Team team;
 
-    public int getId() {
-        return id;
+    public Movement(int amount, Team team){
+        this.quantity = amount;
+        this.team = team;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void move(){
+        getNextValue();
+        updateTeamValues();
     }
 
-    public String getQuantity() {
-        return quantity;
+    private void getNextValue(){
+        int last = 0;
+        ArrayList list = this.team.getMovements();
+
+        if (list.size() > 0)
+            last = Integer.parseInt(list.get(list.size() - 1).toString());
+
+        this.quantity += last;
     }
 
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
+    private void updateTeamValues(){
+        this.team.getScoreLabel().setText(toString());
+        this.team.getMovements().add(this);
+
+        this.team.getAdapter().notifyDataSetChanged();
     }
 
     @Override
     public String toString() {
-        return quantity;
+        return String.valueOf(quantity);
     }
 }

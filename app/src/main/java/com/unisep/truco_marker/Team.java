@@ -12,8 +12,6 @@ import java.util.ArrayList;
  * Created by bruno on 3/1/15.
  */
 public class Team {
-    private String name;
-    private int score;
     private Button plusOne;
     private Button plusThree;
     private TextView scoreLabel;
@@ -21,9 +19,8 @@ public class Team {
     private ArrayAdapter<Movement> adapter;
     private ArrayList<Movement> movements;
 
-    public Team(String name, View buttonPlusOne, View buttonPlusThree, View labelScore, View grid,
+    public Team(View buttonPlusOne, View buttonPlusThree, View labelScore, View grid,
                 ArrayAdapter<Movement> adapter) {
-        this.name = name;
         this.plusOne = (Button) buttonPlusOne;
         this.plusThree = (Button) buttonPlusThree;
         this.scoreLabel = (TextView) labelScore;
@@ -32,14 +29,14 @@ public class Team {
         this.movements = new ArrayList<>();
         this.adapter = adapter;
 
-        adapter.addAll(this.movements);
-        gridMovements.setAdapter(this.adapter);
+        this.adapter.addAll(this.movements);
+        this.gridMovements.setAdapter(this.adapter);
     }
 
     public void doMovement(Button button){
         if(isTeamButton(button)){
-            Movement move = new Movement();
-            move.doMove();
+            Movement movement = new Movement(getButtonValue(button), this);
+            movement.move();
         }
     }
 
@@ -50,67 +47,24 @@ public class Team {
             return false;
     }
 
-    public int getScore() {
-        return score;
+    public int getButtonValue(Button button){
+        if(button.getId() == this.plusOne.getId())
+            return 1;
+        else
+            return 3;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
+    // Accessor Methods!
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Button getPlusOne() {
-        return plusOne;
-    }
-
-    public void setPlusOne(Button plusOne) {
-        this.plusOne = plusOne;
-    }
-
-    public Button getPlusThree() {
-        return plusThree;
-    }
-
-    public void setPlusThree(Button plusThree) {
-        this.plusThree = plusThree;
+    public ArrayList<Movement> getMovements() {
+        return movements;
     }
 
     public TextView getScoreLabel() {
         return scoreLabel;
     }
 
-    public void setScoreLabel(TextView scoreLabel) {
-        this.scoreLabel = scoreLabel;
-    }
-
-    public GridView getGridMovements() {
-        return gridMovements;
-    }
-
-    public void setGridMovements(GridView gridMovements) {
-        this.gridMovements = gridMovements;
-    }
-
     public ArrayAdapter<Movement> getAdapter() {
         return adapter;
-    }
-
-    public void setAdapter(ArrayAdapter<Movement> adapter) {
-        this.adapter = adapter;
-    }
-
-    public ArrayList<Movement> getMovements() {
-        return movements;
-    }
-
-    public void setMovements(ArrayList<Movement> movements) {
-        this.movements = movements;
     }
 }

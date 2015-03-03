@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
 
     public void addItems(View v) {
         Button u = (Button) v;
-        v.
+
 //        int resultado = 0;
 //        if (v.equals(addOneButtonToWe)){
 //            resultado = setScore(1, listWe);

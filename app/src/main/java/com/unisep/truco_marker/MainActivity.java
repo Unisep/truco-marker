@@ -21,14 +21,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         prepareTeams();
-
 //        gridWe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 //                Toast.makeText(getApplicationContext(),
 //                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
 //            }
 //        });
-
     }
 
     private void prepareTeams() {
@@ -51,26 +49,18 @@ public class MainActivity extends Activity {
         );
     }
 
-    public void addItems(View v) {
-        Button u = (Button) v;
-        v.
-//        int resultado = 0;
-//        if (v.equals(addOneButtonToWe)){
-//            resultado = setScore(1, listWe);
-//            labelScoreWe.setText(String.valueOf(resultado));
-//        }else if (v.equals(addThreeButtonToWe)){
-//            resultado = setScore(3, listWe);
-//            labelScoreWe.setText(String.valueOf(resultado));
-//        }else if(v.equals(addOneButtonToThey)) {
-//            resultado = setScore(1, listThey);
-//            labelScoreThey.setText(String.valueOf(resultado));
-//        } else {
-//            resultado = setScore(3, listThey);
-//            labelScoreThey.setText(String.valueOf(resultado));
-//        }
-//
-//        adapterWe.notifyDataSetChanged();
-//        adapterThey.notifyDataSetChanged();
+    public void addItems(View view) {
+        Button button = (Button) view;
+
+        teamThey.doMovement(button);
+        teamWe.doMovement(button);
+
+
+//      resultado = setScore(3, listThey);
+//      labelScoreThey.setText(String.valueOf(resultado));
+
+//      adapterWe.notifyDataSetChanged();
+//      adapterThey.notifyDataSetChanged();
 
     }
 

@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Team {
     private String name;
+    private int score;
     private Button plusOne;
     private Button plusThree;
     private TextView scoreLabel;
@@ -35,8 +36,26 @@ public class Team {
         gridMovements.setAdapter(this.adapter);
     }
 
-    public boolean isTeamObject(Object o){
-        return false;
+    public void doMovement(Button button){
+        if(isTeamButton(button)){
+            Movement move = new Movement();
+            move.doMove();
+        }
+    }
+
+    public boolean isTeamButton(Button button){
+        if(button.getId() == this.plusOne.getId() || button.getId() == this.plusThree.getId())
+            return true;
+        else
+            return false;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getName() {

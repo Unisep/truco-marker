@@ -24,8 +24,10 @@ public class MainActivity extends Activity {
 //            }
 //        });
 
-// A ideia é que os eventos sejam criados a partir daqui e que as características e obrigações
-// sejam divididas
+// TODO: Criar o evento de voltar jogadas
+// TODO: Criar o evento de iniciar/cancelar partidas!
+// TODO: Melhorar layout, trocar fonte e melhorar visual e posicionar botões.
+
     }
 
     private void prepareTeams() {

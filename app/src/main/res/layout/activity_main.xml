@@ -12,7 +12,8 @@
         android:background="#7F4406"
         android:layout_centerHorizontal="true"
         android:id="@+id/verticalLine"
-        android:layout_below="@+id/button3" />
+        android:layout_below="@+id/button3"
+        android:layout_above="@+id/button_plus_one_they" />
 
 
     <TextView
@@ -21,8 +22,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/label_we"
         android:id="@+id/textView"
-        android:layout_below="@+id/button3"
-        android:layout_alignLeft="@+id/button3" />
+        android:layout_alignTop="@+id/textView2"
+        android:layout_alignStart="@+id/button3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,8 +31,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/label_they"
         android:id="@+id/textView2"
-        android:layout_below="@+id/button3"
-        android:layout_alignRight="@+id/button3" />
+        android:layout_above="@+id/grid_view_they"
+        android:layout_alignEnd="@+id/button3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,8 +41,8 @@
         android:text="@string/label_start_score"
         android:id="@+id/label_score_we"
         android:textSize="77sp"
-        android:layout_below="@+id/button3"
-        android:layout_toLeftOf="@+id/button_plus_three_we" />
+        android:layout_alignTop="@+id/label_score_they"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,8 +51,8 @@
         android:text="@string/label_start_score"
         android:id="@+id/label_score_they"
         android:textSize="77sp"
-        android:layout_below="@+id/button3"
-        android:layout_alignLeft="@+id/button_plus_three_they" />
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignStart="@+id/button_plus_three_they" />
 
     <Button
         android:layout_width="wrap_content"
@@ -94,8 +95,9 @@
         android:layout_height="wrap_content"
         android:text="@string/back_button"
         android:id="@+id/button3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/grid_view_we"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp" />
 
 
     <GridView
@@ -115,8 +117,10 @@
         android:layout_height="380dp"
         android:id="@+id/grid_view_they"
         android:numColumns="1"
-        android:gravity="center"
         android:stretchMode="columnWidth"
         android:layout_alignTop="@+id/grid_view_we"
-        android:layout_toEndOf="@+id/grid_view_we" />
+        android:layout_toEndOf="@+id/grid_view_we"
+        android:layout_alignParentStart="false"
+        android:gravity="center"
+        android:paddingLeft="70dp" />
 </RelativeLayout>

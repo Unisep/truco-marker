@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * Created by bruno on 3/1/15.
  */
 public class Team {
+    private String name;
     private Button plusOne;
     private Button plusThree;
     private TextView scoreLabel;
@@ -20,15 +21,16 @@ public class Team {
     private ArrayList<Movement> movements;
 
     public Team(View buttonPlusOne, View buttonPlusThree, View labelScore, View grid,
-                ArrayAdapter<Movement> adapter) {
+                ArrayAdapter<Movement> adapter, String name) {
         this.plusOne = (Button) buttonPlusOne;
         this.plusThree = (Button) buttonPlusThree;
         this.scoreLabel = (TextView) labelScore;
         this.gridMovements = (GridView) grid;
         this.scoreLabel = (TextView) labelScore;
         this.movements = new ArrayList<>();
-        this.adapter = adapter;
+        this.name = name;
 
+        this.adapter = adapter;
         this.adapter.addAll(this.movements);
         this.gridMovements.setAdapter(this.adapter);
     }
@@ -40,11 +42,12 @@ public class Team {
         }
     }
 
+    public boolean isChampion(){
+        return Integer.parseInt(this.scoreLabel.getText().toString()) > 11;
+    }
+
     public boolean isTeamButton(Button button){
-        if(button.getId() == this.plusOne.getId() || button.getId() == this.plusThree.getId())
-            return true;
-        else
-            return false;
+        return button.getId() == this.plusOne.getId() || button.getId() == this.plusThree.getId();
     }
 
     public int getButtonValue(Button button){
@@ -67,4 +70,6 @@ public class Team {
     public ArrayAdapter<Movement> getAdapter() {
         return adapter;
     }
+
+    public String getName() { return name; }
 }

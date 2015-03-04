@@ -63,8 +63,8 @@ public class MainActivity extends Activity {
 
     private void existsChampion(){
         if(teamWe.isChampion() || teamThey.isChampion()) {
-            clearScore(teamWe);
-            clearScore(teamThey);
+            resetScore(teamWe);
+            resetScore(teamThey);
 
             if (teamWe.isChampion())
                 notifyScreen(teamWe);
@@ -73,8 +73,9 @@ public class MainActivity extends Activity {
         }
     }
 
-    private void clearScore(Team team){
+    private void resetScore(Team team){
         team.getScoreLabel().setText("00");
+        team.getMovements().clear();
     }
 
     private void notifyScreen(Team team){

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -26,9 +25,7 @@ public class MainActivity extends Activity {
 //            }
 //        });
 
-// TODO: Criar o evento de voltar jogadas
-// TODO: Criar o evento de iniciar/cancelar partidas!
-// TODO: Melhorar layout, trocar fonte e melhorar visual e posicionar botões.
+//
 
     }
 

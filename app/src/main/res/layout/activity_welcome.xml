@@ -27,4 +27,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="89dp"
         android:textSize="@dimen/title_dimension" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_new_game"
+        android:id="@+id/button"
+        android:layout_above="@+id/button2"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4"
+        android:onClick="createNewGame" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_to_another_option"
+        android:id="@+id/button2"
+        android:layout_marginBottom="78dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_alignEnd="@+id/button"
+        android:layout_marginTop="10dp" />
 </RelativeLayout>

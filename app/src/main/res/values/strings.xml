@@ -12,10 +12,15 @@
     <string name="label_button_plus_three_we">+3</string>
     <string name="label_button_plus_three_they">+3</string>
     <string name="back_button">Voltar</string>
-    <string name="botao_sei_la">Sei lá</string>
+    <string name="botao_sei_la">I don\'t know</string>
     <string name="text_view_custom_layout">Aqui vem as paradas</string>
-    <string name="title_activity_welcome">Welcome to Truco Marker!</string>
+    <string name="title_activity_welcome">Truco Marker</string>
     <string name="welcome_one">Welcome to the:</string>
     <string name="welcome_two">Truco Marker</string>
+    <string name="button_new_game">New Game!</string>
+    <string name="button_to_another_option">Another Good Option!</string>
+    <string name="finished_game_dialog">Did you like to start a new Game?</string>
+    <string name="finished_game_dialog_ok">Yes!</string>
+    <string name="finished_game_dialog_no">No, I\'ve lost the whole my money!</string>
 
 </resources>

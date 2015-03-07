@@ -2,12 +2,14 @@ package com.unisep.truco_marker;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 
-public class MainActivity extends Activity {
+public class GameActivity extends Activity {
 
     private Team teamWe;
     private Team teamThey;
@@ -18,15 +20,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         prepareTeams();
-//        gridWe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//                Toast.makeText(getApplicationContext(),
-//                        ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//
-
+        //  gridWe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //      public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+        //         Toast.makeText(getApplicationContext(),
+        //                    ((TextView) v).getText(), Toast.LENGTH_SHORT).show();
+        //         }
+        //   });
     }
 
     private void prepareTeams() {
@@ -76,12 +75,28 @@ public class MainActivity extends Activity {
     }
 
     private void notifyScreen(Team team){
-        String message = team.getName() + " foi o vencedor!";
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-        AlertDialog alert = new AlertDialog.Builder(this).create();
-        alert.setTitle("Seus poca fôia");
-        alert.setMessage(message);
+        alertDialogBuilder
+                .setTitle("The game has ended!")
+                .setCancelable(false)
+                .setMessage(R.string.finished_game_dialog)
+                .setPositiveButton(R.string.finished_game_dialog_ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // código para iniciar um novo jogo.
+                        finish();
+                    }
+                })
+                .setNegativeButton(R.string.finished_game_dialog_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                });
 
-        alert.show();
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
     }
 }

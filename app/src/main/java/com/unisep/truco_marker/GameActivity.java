@@ -2,10 +2,8 @@ package com.unisep.truco_marker;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 
@@ -35,16 +33,14 @@ public class GameActivity extends Activity {
                           findViewById(R.id.button_plus_three_we),
                           findViewById(R.id.label_score_we),
                           findViewById(R.id.grid_view_we),
-                          new ArrayAdapter<Movement>(this, layout),
-                          "Nós"
+                          this, layout, "Nós"
         );
 
         teamThey = new Team(findViewById(R.id.button_plus_one_they),
                             findViewById(R.id.button_plus_three_they),
                             findViewById(R.id.label_score_they),
                             findViewById(R.id.grid_view_they),
-                            new ArrayAdapter<Movement>(this, layout),
-                            "Eles"
+                            this, layout, "Eles"
         );
     }
 

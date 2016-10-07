@@ -1,5 +1,6 @@
 package com.unisep.truco_marker;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,23 +17,21 @@ public class Team {
     private Button plusOne;
     private Button plusThree;
     private TextView scoreLabel;
-    private GridView gridMovements;
     private ArrayAdapter<Movement> adapter;
     private ArrayList<Movement> movements;
 
-    public Team(View buttonPlusOne, View buttonPlusThree, View labelScore, View grid,
-                ArrayAdapter<Movement> adapter, String name) {
+    public Team(View buttonPlusOne, View buttonPlusThree, View labelScore, View grid, Context context,
+                int layout, String name) {
         this.plusOne = (Button) buttonPlusOne;
         this.plusThree = (Button) buttonPlusThree;
         this.scoreLabel = (TextView) labelScore;
-        this.gridMovements = (GridView) grid;
         this.scoreLabel = (TextView) labelScore;
         this.movements = new ArrayList<>();
         this.name = name;
 
-        this.adapter = adapter;
-        this.adapter.addAll(this.movements);
-        this.gridMovements.setAdapter(this.adapter);
+        this.adapter = new ArrayAdapter<>(context, layout, this.movements);
+        GridView gridMovements = (GridView) grid;
+        gridMovements.setAdapter(this.adapter);
     }
 
     public void doMovement(Button button){

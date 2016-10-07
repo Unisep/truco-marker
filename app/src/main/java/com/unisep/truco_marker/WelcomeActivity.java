@@ -47,17 +47,16 @@ public class WelcomeActivity extends Activity {
         plusOneThey = (Button) findViewById(R.id.button_plus_one_they);
         plusThreeThey = (Button) findViewById(R.id.button_plus_three_they);
 
-        lblScoreWe.setTypeface(face);
-        lblScoreThey.setTypeface(face);
-        lblWe.setTypeface(face);
-        lblThey.setTypeface(face);
+//        lblScoreWe.setTypeface(face);
+//        lblScoreThey.setTypeface(face);
+//        lblWe.setTypeface(face);
+//        lblThey.setTypeface(face);
 
-        comeBack.setTypeface(face);
-        plusOneWe.setTypeface(face);
-        plusThreeWe.setTypeface(face);
-        plusOneThey.setTypeface(face);
-        plusThreeThey.setTypeface(face);
-
+//        comeBack.setTypeface(face);
+//        plusOneWe.setTypeface(face);
+//        plusThreeWe.setTypeface(face);
+//        plusOneThey.setTypeface(face);
+//        plusThreeThey.setTypeface(face);
     }
 }
 
